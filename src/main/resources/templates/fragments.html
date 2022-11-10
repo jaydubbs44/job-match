@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div id="header"  class="container" th:fragment="header">
+        <nav class="row">
+        <img id="ada" class="col" src="../images/ada.png" alt="Ada Lovelace" >
+          <h2 class="col-6">AdaCodes/Lovelace Jobs</h2>
+             <th:block class="col">
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="">Account Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Create Account</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Login</a></li>
+                </ul>
+             </th:block>
+        </nav>
+    </div>
+
+</body>
+</html>
