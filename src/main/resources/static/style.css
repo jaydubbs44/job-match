@@ -1,0 +1,19 @@
+#header{
+    color: purple;
+    font-family: Georgia;
+    text-align: center;
+    background-color: pink;
+    border: 2px solid powderblue
+}
+#ada{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+#land{
+    padding: 100px 25px;
+    text-align: center;
+    align-items: center;
+    color: black;
+    font-family: Georgia;
+}
