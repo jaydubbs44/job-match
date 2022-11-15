@@ -15,20 +15,14 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/createAccount")
-public class CreateAccountController {
+public class UserController {
 
     @Autowired
     private UserRepository userRepository;
 
-// findAll, save, findbyId
-
-    @ModelAttribute
-    public userDto userDto{
-    return new userDto();
-    }
-
     @GetMapping
-    public String showCreateAccountForm(){
+    public String showCreateAccountForm(Model model){
+        model.addAttribute(new User());
         return "/createAccount";
     }
 
@@ -39,7 +33,7 @@ public class CreateAccountController {
         }
         userRepository.save(newUser);
         model.addAttribute("firstName", newUser.getFirstName());
-        return "createSuccess";
+        return "";
     }
 
 }
