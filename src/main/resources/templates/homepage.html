@@ -1,10 +1,92 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
 <head th:replace="fragments :: head"></head>
 
 <body>
 <div th:replace="fragments :: header"></div>
+<header class="w3-container w3-antiquewhite w3-center" style="padding:128px 16px" id="homeheader">
+    <h1 class='lineUp'>Welcome to AdaCodes/Lovelace Jobs!</h1>
+</header>
+<div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+        <div class="w3-twothird">
+            <h2>Where does "Lovelace" comes from?</h2>
+            <h5 class="w3-padding-32">We decided to name our website after Ada Lovelace, a famous mathematician who is known as the first computer programmer
+                after realizing that a computer could follow a series of simple instructions to perform a complex task.
 
-<h1>Hello, This is a Test</h1>
+                Her efforts inspire us because she was a woman who balanced her profession and her motherhood.</h5>
+            <p class="w3-text-grey">Lovelace wrote of how the machine could be programmed with a code to calculate Bernoulli numbers,
+                which some consider to be the first algorithm to be carried out by a machine and thus the first computer program.</p>
+        </div>
+
+        <div class="w3-third w3-center">
+            <img src="../Images/ada-image-bates-blog-1024x683.jpg" id="homeada">
+        </div>
+    </div>
+</div>
+</div>
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+    <div class="w3-content">
+        <div class="w3-third w3-center">
+            <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
+        </div>
+
+        <div class="w3-twothird">
+            <h1>Lorem Ipsum</h1>
+            <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+
+            <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+    </div>
+</div>
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 id="idea" class="w3-margin w3-xlarge">
+        <span>"There</span>
+        <span>are</span>
+        <span>no</span>
+        <span>limits</span>
+        <span>to</span>
+        <span>what</span>
+        <span>you</span>
+        <span>can</span>
+        <span>accomplish,</span>
+        <span>except</span>
+        <span>the</span>
+        <span>limits</span>
+        <span>you</span>
+        <span>place</span>
+        <span>on</span>
+        <span>your</span>
+        <span>own</span>
+        <span>thinking"</span>
+        <span>-Bryan</span>
+        <span>Tracy</span>
+    </h1>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">
+    <div class="w3-xlarge w3-padding-32">
+        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+        <i class="fa fa-snapchat w3-hover-opacity"></i>
+        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fa fa-twitter w3-hover-opacity"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+    </div>
+    <p>Powered by Lovelace Jobs</p>
+</footer>
 </body>
 </html>
