@@ -1,9 +1,16 @@
 package org.launchcode.jobmatch.models;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue
+    private int id;
 
     @NotBlank(message="This field cannot be left blank.")
     @Size(min=3, max=40)
@@ -21,6 +28,7 @@ public class User {
         this.email = email;
     }
 
+    public User(){}
     public String getFirstName() {
         return firstName;
     }
