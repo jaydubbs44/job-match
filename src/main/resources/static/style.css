@@ -148,3 +148,10 @@ span:nth-child(18) {
   transform: scale(0.94);
   animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
 }
+.doom-error {
+  margin: 0 auto;
+}
+
+.error-table {
+ margin: 0 auto;
+}
