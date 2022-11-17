@@ -1,31 +1,40 @@
 package org.launchcode.jobmatch.models;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 @Entity
-public class User {
+public class User extends AbstractEntity{
 
-    @Id
-    @GeneratedValue
-    private int id;
-
-    @NotBlank(message="This field cannot be left blank.")
-    @Size(min=3, max=40)
-    private String firstName;
-    @NotBlank(message="This field cannot be left blank.")
-    @Size(min=3, max=60)
-    private String lastName;
-
-    @Email(message="Please enter a valid email address.")
+    @Email
+    @NotNull
     private String email;
 
-    public User(String firstName, String lastName, String email){
+    @NotNull
+    private String firstName;
+    @NotNull
+    private String lastName;
+
+    @NotNull
+    private String username;
+
+    @NotNull
+    private String pwHash;
+
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    public User(String email, String firstName, String lastName, String username, String password){
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.username = username;
+        this.pwHash = encoder.encode(password);
+
     }
 
     public User(){}
@@ -51,5 +60,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public boolean isMatchingPassword (String password) {
+        return encoder.matches(password, pwHash);
     }
 }
