@@ -1,23 +1,104 @@
-nb<!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body>
-    <div th:replace="fragments :: header"></div>
-
-    <div id="land" class="container">
-        <h1 class="display-5">Welcome to AdaCodes/LovelaceJobs!</h1>
-        <h3 class="lead">Helping women tackle the tech-job marketplace.</h3>
-        <button type="button" class="btn btn-info">Learn More</button>
-        <a href="/createAccount">
-            <button type="button" class="btn btn-info">Create Account</button>
-        </a>
-        <br>
-        <br>
-        <blockquote class="blockquote text-center">
-            <p class="mb-0">"The more I study, the more insatiable do I feel my genius for it to be."</p>
-            <footer class="blockquote-footer"><cite title="Source Title">Ada Lovelace</cite></footer>
-        </blockquote>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>AdaCodes</title>
+    <link rel="icon" type="image/x-icon" href="../Images/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container px-5">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/createAccount">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link" href="login">Log In</a></li>
+            </ul>
+        </div>
     </div>
-
+</nav>
+<!-- Header-->
+<header class="masthead text-center text-white">
+    <div class="masthead-content">
+        <div class="container px-5">
+            <h1 class="masthead-heading mb-0 lineUp" >Welcome to AdaCodes!</h1>
+            <h2 class="masthead-subheading mb-0 lineUp">Helping women tackle the tech-job marketplace</h2>
+            <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">Learn More</a>
+        </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+</header>
+<!-- Content section 1-->
+<section id="scroll">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle" src="../Images/ada.png" alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Where does "Ada" comes from?</h2>
+                    <p>We decided to name our website after Ada Lovelace, a famous mathematician who is known as the first computer programmer after realizing that a computer could follow a series of simple instructions to perform a complex task. Her efforts inspire us because she was a woman who balanced her profession and her motherhood.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Content section 2-->
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="p-5"><img class="img-fluid rounded-circle" src="../Images/ada-image-bates-blog-1024x683.jpg" alt="..." /></div>
+            </div>
+            <div class="col-lg-6">
+                <div class="p-5">
+                    <h2 class="display-4">A woman who loved coding!</h2>
+                    <p>Lovelace wrote of how the machine could be programmed with a code to calculate Bernoulli numbers, which some consider to be the first algorithm to be carried out by a machine and thus the first computer program.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Content section 3-->
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle" src="../Images/ada_lovelace_color.png" alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">To all the women who want to start their tech career...</h2>
+                    <p>You can do it too! This website is designed to help you start your tech career with the right foot.</p>
+                    <br>
+                    <p><cite>"The more I study, the more insatiable do I feel my genius for it to be."</cite> Ada Lovelace</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer class="py-5 bg-black">
+    <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; AdaCodes 2022</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
 </body>
 </html>
