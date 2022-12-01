@@ -21,14 +21,15 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     @Autowired
     AuthenticationController authenticationController;
 
-    private static final List<String> whitelist = Arrays.asList("/landing", "/login", "/createAccount", "/logout");
+    private static final List<String> whitelist = Arrays.asList("/login", "/logout", "/createAccount", "/Images",
+    "/logintemplate", "/signuptemplate", "/style.css", "/landing");
 
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,
                              Object handler) throws IOException {
 
-        //checks whether request is whitelisted; is so, page is rendered.
+        //checks whether request is whitelisted; if so, page is rendered.
         if (isWhitelisted(request.getRequestURI())) {
             return true;
         }
@@ -47,7 +48,7 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     //check whether request is whitelisted
     private static boolean isWhitelisted(String path) {
         for (String pathRoot : whitelist) {
-            if (path.startsWith(pathRoot)) {
+            if (path.startsWith(pathRoot) || path.endsWith("/")) {
                 return true;
             }
         }
