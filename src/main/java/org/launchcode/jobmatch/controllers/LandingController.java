@@ -12,4 +12,7 @@ public class LandingController {
         return "landing";
     }
 
+    @GetMapping("landing")
+    public String showLandingDirect(){ return "landing";}
+
 }
