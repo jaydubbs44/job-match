@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+    <title>Job Preferences</title>
+</head>
+
+<div th:replace="fragments :: header"></div>
+<body>
+<form method="post">
+    <div class="form-group">
+        <label>Country
+
+            <input type="text" name= "country" th:field="${searchPreferences.country}" class="form-control">
+
+            <input type="text" th:field="${searchPreferences.country}" class="form-control">
+
+        </label>
+    </div>
+    <div class="form-group">
+        <label>City
+
+            <input type="text" name="city" th:field="${searchPreferences.city}" class="form-control">
+
+            <input type="text" th:field="${searchPreferences.city}" class="form-control">
+
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Search Radius
+
+            <input type="text" name="radius" th:field="${searchPreferences.radius}" class="form-control">
+        </label>
+    </div>
+    <div>
+        <label>Search Term
+            <input type="form" name="searchTerm" th:field="${searchPreferences.searchTerm}" class="form-control">
+        </label>
+    </div>
+    <div class="form-group">
+        <label>
+            <a>
+                <input type="submit" value="Search" class="btn btn-success" >
+            </a>
+
+            <input type="text" th:field="${searchPreferences.radius}" class="form-control">
+        </label>
+
+    </div>
+    <div class="form-group">
+        <p>All Job Types
+            <li th:each = "jobType : ${allJobTypes}">
+                <input type="checkbox"   th:checked="${searchPreferences.jobType}" th:value="${jobType}" class="form-control">
+                <label th:text="${jobType}"></label>
+            </li>
+        </p>
+        <p class="error" th:errors="${searchPreferences.jobType}"></p>
+    </div>
+</form>
+</body>
+</html>
