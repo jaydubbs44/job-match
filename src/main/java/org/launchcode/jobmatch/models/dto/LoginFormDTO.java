@@ -15,7 +15,7 @@ public class LoginFormDTO {
 
     @NotNull
     @NotBlank
-    @Size(min=8, max=35, message="Password invalid. Please choose a username between 8 and 35 characters long.")
+    @Size(min=8, max=35, message="Password invalid. Please choose a password between 8 and 35 characters long.")
     private String password;
 
     public String getUsername() {
