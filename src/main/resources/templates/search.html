@@ -8,53 +8,64 @@
 <div th:replace="fragments :: header"></div>
 <body>
 <form method="post">
-    <div class="form-group">
+    <div class="searchForm">
         <label>Country
-
-            <input type="text" name= "country" th:field="${searchPreferences.country}" class="form-control">
-
-            <input type="text" th:field="${searchPreferences.country}" class="form-control">
-
+            <input type="text"  th:field="${searchPreferences.country}" class="searchInputBoxes" >
         </label>
     </div>
-    <div class="form-group">
+    <div class="searchForm">
         <label>City
-
-            <input type="text" name="city" th:field="${searchPreferences.city}" class="form-control">
-
-            <input type="text" th:field="${searchPreferences.city}" class="form-control">
-
+            <input type="text" th:field="${searchPreferences.city}" class="searchInputBoxes">
         </label>
     </div>
-    <div class="form-group">
+    <div class="searchForm">
         <label>Search Radius
-
-            <input type="text" name="radius" th:field="${searchPreferences.radius}" class="form-control">
+            <input type="text" th:field="${searchPreferences.radius}" class="searchInputBoxes">
         </label>
     </div>
-    <div>
+    <div class="searchForm">
+        <label>Full-Time</label>
+        <input type="checkbox" th:value="fulltime" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+        <label>Part-Time</label>
+        <input type="checkbox" th:value="parttime" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+        <label>Contract</label>
+        <input type="checkbox" th:value="contract" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+
+        <label>Internship</label>
+        <input type="checkbox" th:value="internship" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+
+        <label>Temporary</label>
+        <input type="checkbox" th:value="temporary" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+    </div>
+    <div class="searchForm">
         <label>Search Term
-            <input type="form" name="searchTerm" th:field="${searchPreferences.searchTerm}" class="form-control">
+            <input type="text" th:field="${searchPreferences.searchTerm}" class="searchInputBoxes">
         </label>
     </div>
-    <div class="form-group">
-        <label>
-            <a>
-                <input type="submit" value="Search" class="btn btn-success" >
-            </a>
-
-            <input type="text" th:field="${searchPreferences.radius}" class="form-control">
+    <div class="searchForm">
+        <label> Site Type
+            <input type="text" name="siteType" th:field="${searchPreferences.siteType}" class="searchInputBoxes" >
         </label>
-
+        <p class="error" th:errors="${searchPreferences.siteType}"></p>
     </div>
-    <div class="form-group">
-        <p>All Job Types
-            <li th:each = "jobType : ${allJobTypes}">
-                <input type="checkbox"   th:checked="${searchPreferences.jobType}" th:value="${jobType}" class="form-control">
-                <label th:text="${jobType}"></label>
-            </li>
-        </p>
-        <p class="error" th:errors="${searchPreferences.jobType}"></p>
+    <div class="searchForm">
+        <label>Save a search by a Name
+                <input type="text" th:field="${searchPreferences.savedSearchName}" class="searchInputBoxes" >
+        </label>
+    </div>
+    <div class="searchForm">
+        <label>Username
+            <input type="text" th:field="${username}" class="searchInputBoxes" >
+            <a></a>
+        </label>
+    </div>
+    <div class="searchForm">
+            <input type="submit" value="search">
     </div>
 </form>
 </body>
