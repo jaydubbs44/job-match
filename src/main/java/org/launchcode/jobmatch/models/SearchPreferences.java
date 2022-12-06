@@ -1,4 +1,8 @@
 package org.launchcode.jobmatch.models;
+import org.launchcode.jobmatch.controllers.AuthenticationController;
+import org.launchcode.jobmatch.data.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -13,9 +17,7 @@ public class SearchPreferences extends AbstractEntity{
 
     private String country;
 
-
     private String city;
-
 
     private Integer radius;
 
@@ -30,9 +32,17 @@ public class SearchPreferences extends AbstractEntity{
     
     private String savedSearchName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name="user_id", referencedColumnName = "id")
     private User user;
+
+    @Transient
+    @Autowired
+    UserRepository userRepository;
+
+    @Transient
+    @Autowired
+    AuthenticationController authenticationController;
 
     public SearchPreferences(String country, String city, Integer radius, HashMap<Integer,String> jobType, String searchTerm, String siteType, String savedSearchName, User user) {
         this.country = country;
@@ -115,4 +125,10 @@ public class SearchPreferences extends AbstractEntity{
     public void setUser(User user) {
         this.user = user;
     }
+
+    public AuthenticationController getAuthenticationController() {
+        return authenticationController;
+    }
+
+
 }

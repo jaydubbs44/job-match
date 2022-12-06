@@ -4,6 +4,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User extends AbstractEntity{
@@ -25,14 +27,17 @@ public class User extends AbstractEntity{
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+    @ManyToMany
+    @JoinColumn(name = "search_preferences_id")
+    private List<SearchPreferences> searchPreferences;
     public User(String email, String firstName, String lastName, String username, String password){
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.pwHash = encoder.encode(password);
-    }
 
+    }
 
     public User(){}
     public String getFirstName() {
@@ -67,6 +72,11 @@ public class User extends AbstractEntity{
         return encoder.matches(password, pwHash);
     }
 
+    public List<SearchPreferences> getSearchPreferences() {
+        return searchPreferences;
+    }
 
-
+    public void setSearchPreferences(SearchPreferences searchPreferences) {
+        this.searchPreferences.add(searchPreferences);
+    }
 }
