@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+    <title>Job Preferences</title>
+</head>
+
+<div th:replace="fragments :: header"></div>
+<body>
+<form method="post">
+    <div class="searchForm">
+        <label>Country
+            <input type="text"  th:field="${searchPreferences.country}" class="searchInputBoxes" >
+        </label>
+    </div>
+    <div class="searchForm">
+        <label>City
+            <input type="text" th:field="${searchPreferences.city}" class="searchInputBoxes">
+        </label>
+    </div>
+    <div class="searchForm">
+        <label>Search Radius
+            <input type="text" th:field="${searchPreferences.radius}" class="searchInputBoxes">
+        </label>
+    </div>
+    <div class="searchForm">
+        <label>Full-Time</label>
+        <input type="checkbox" th:value="fulltime" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+        <label>Part-Time</label>
+        <input type="checkbox" th:value="parttime" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+        <label>Contract</label>
+        <input type="checkbox" th:value="contract" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+
+        <label>Internship</label>
+        <input type="checkbox" th:value="internship" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+
+        <label>Temporary</label>
+        <input type="checkbox" th:value="temporary" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+    </div>
+    <div class="searchForm">
+        <label>Search Term
+            <input type="text" th:field="${searchPreferences.searchTerm}" class="searchInputBoxes">
+        </label>
+    </div>
+    <div class="searchForm">
+        <label> Site Type
+            <input type="text" name="siteType" th:field="${searchPreferences.siteType}" class="searchInputBoxes" >
+        </label>
+        <p class="error" th:errors="${searchPreferences.siteType}"></p>
+    </div>
+    <div class="searchForm">
+        <label>Save a search by a Name
+                <input type="text" th:field="${searchPreferences.savedSearchName}" class="searchInputBoxes" >
+        </label>
+    </div>
+    <div class="searchForm">
+            <input type="submit" value="search">
+    </div>
+</form>
+</body>
+</html>
