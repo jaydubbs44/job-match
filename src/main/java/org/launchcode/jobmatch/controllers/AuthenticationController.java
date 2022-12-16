@@ -126,43 +126,4 @@ public class AuthenticationController {
         return "/logout";
     }
 
-    @GetMapping("/editAccount")
-    public String showEditAccount(Model model){
-        model.addAttribute(new RegisterFormDTO());
-        return "/editAccount";
-    }
-
-    @PostMapping("/editAccount")
-    public String submitAccountChanges(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
-                                       Errors errors, HttpServletRequest request,
-                                       Model model, SearchPreferences searchPreferences){
-
-//Check that new username does not already exist, establish current user in order to grab their search preferences,
-//which will later be added to their new user account
-        User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
-
-
-        if (errors.hasErrors()) {
-            return "/editAccount";
-        }
-
-        if (existingUser != null) {
-            errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
-            return "/editAccount";
-        }
-
-        String password = registerFormDTO.getPassword();
-        String verifyPassword = registerFormDTO.getVerifyPassword();
-        if (!password.equals(verifyPassword)) {
-            errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
-            return "/editAccount";
-        }
-
-        User newUser = new User(registerFormDTO.getEmail(), registerFormDTO.getFirstName(), registerFormDTO.getLastName(), registerFormDTO.getUsername(), registerFormDTO.getPassword());
-        userRepository.save(newUser);
-        setUserInSession(request.getSession(), newUser);
-
-
-        return "/profile";
-    }
 }
