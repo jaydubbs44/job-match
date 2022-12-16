@@ -1,6 +1,8 @@
 package org.launchcode.jobmatch.controllers;
 
+import org.launchcode.jobmatch.data.SearchPreferencesRepository;
 import org.launchcode.jobmatch.data.UserRepository;
+import org.launchcode.jobmatch.models.SearchPreferences;
 import org.launchcode.jobmatch.models.User;
 import org.launchcode.jobmatch.models.dto.LoginFormDTO;
 import org.launchcode.jobmatch.models.dto.RegisterFormDTO;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -25,6 +28,9 @@ public class AuthenticationController {
     UserRepository userRepository;
 
     private static final String userSessionKey = "user";
+
+    @Autowired
+    private SearchPreferencesRepository searchPreferencesRepository;
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -118,5 +124,45 @@ public class AuthenticationController {
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
         return "/logout";
+    }
+
+    @GetMapping("/editAccount")
+    public String showEditAccount(Model model){
+        model.addAttribute(new RegisterFormDTO());
+        return "/editAccount";
+    }
+
+    @PostMapping("/editAccount")
+    public String submitAccountChanges(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
+                                       Errors errors, HttpServletRequest request,
+                                       Model model, SearchPreferences searchPreferences){
+
+//Check that new username does not already exist, establish current user in order to grab their search preferences,
+//which will later be added to their new user account
+        User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
+
+
+        if (errors.hasErrors()) {
+            return "/editAccount";
+        }
+
+        if (existingUser != null) {
+            errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
+            return "/editAccount";
+        }
+
+        String password = registerFormDTO.getPassword();
+        String verifyPassword = registerFormDTO.getVerifyPassword();
+        if (!password.equals(verifyPassword)) {
+            errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+            return "/editAccount";
+        }
+
+        User newUser = new User(registerFormDTO.getEmail(), registerFormDTO.getFirstName(), registerFormDTO.getLastName(), registerFormDTO.getUsername(), registerFormDTO.getPassword());
+        userRepository.save(newUser);
+        setUserInSession(request.getSession(), newUser);
+
+
+        return "/profile";
     }
 }

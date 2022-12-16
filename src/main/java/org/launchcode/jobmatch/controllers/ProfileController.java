@@ -39,13 +39,18 @@ public class ProfileController {
         User user = authenticationController.getUserFromSession(session);
         List<SearchPreferences> searchPreferences = user.getSearchPreferences();
 
-        model.addAttribute("email", user.getEmail());
-        model.addAttribute("firstName", user.getFirstName());
-        model.addAttribute("lastName", user.getLastName());
-        model.addAttribute("username", user.getUsername());
+        String email = "Email: " + user.getEmail();
+        String firstName = "First Name: " + user.getFirstName();
+        String lastName = "Last Name: " + user.getLastName();
+        String username = "Username: " + user.getUsername();
+
+        model.addAttribute("email", email);
+        model.addAttribute("firstName", firstName);
+        model.addAttribute("lastName", lastName);
+        model.addAttribute("username", username);
 
         model.addAttribute("searchPreferences", searchPreferences);
-        model.addAttribute("user", user);
+
         return "profile";
     }
 
