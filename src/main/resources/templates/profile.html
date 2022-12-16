@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
-    <title>Home</title>
+    <title>Profile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../hometemplate/sidebar-06/css/style.css">
 </head>
-<body>
+<body style="background-color:#f7dee0">
 
 <div class="container d-flex align-items-stretch">
     <nav id="sidebar" class="img" style="background-image: url(../Images/ada.png);">
@@ -45,19 +45,17 @@
     </nav>
 
     <!-- Page Content  -->
-        <div id="content">
-        <h1>User Profile</h1>
-        <h2>User Information</h2>
-        <h4 th:text = "${email}"></h4>
-        <h4 th:text = "${firstName}"></h4>
-        <h4 th:text = "${lastName}"></h4>
-        <h4 th:text = "${username}"></h4>
-            <div class="mx-auto">
-                <a class="btn btn-outline-dark btn-lg" href="/editAccount">Edit Your Profile</a>
-            </div>
-        <h2>Saved Searches</h2>
+        <div style="text-align:center" id="content">
+        <h1 style="text-align: center">User Profile</h1>
+        <h3>User Information</h3>
+        <h6 th:text = "${email}"></h6>
+        <h6 th:text = "${firstName}"></h6>
+        <h6 th:text = "${lastName}"></h6>
+        <h6 th:text = "${username}"></h6>
+
+        <h3>Saved Searches</h3>
         <table class = "table-bordered">
-            <tr>
+            <tr style="color:black">
                 <th>Search Name</th>
                 <th>Site Type</th>
                 <th>Country</th>
@@ -66,7 +64,7 @@
                 <th>Job Types</th>
                 <th>Search Term</th>
             </tr>
-            <tr th:each = "search: ${searchPreferences}">
+            <tr style="color: purple"th:each = "search: ${searchPreferences}">
                 <th th:text = "${search.getSavedSearchName()}"></th>
                 <th th:text = "${search.getSiteType()}"></th>
                 <th th:text = "${search.getCountry()}"></th>
@@ -76,6 +74,7 @@
                 <th th:text = "${search.getSearchTerm()}"></th>
             </tr>
         </table>
+        <a class="btn btn-outline-dark btn-lg" href="/search">Add Additional Searches</a>
         </div>
 </div>
 

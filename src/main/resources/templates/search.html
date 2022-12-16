@@ -1,66 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head th:replace="fragments :: head">
-    <meta charset="UTF-8">
-    <title>Job Preferences</title>
+<head>
+    <title>Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../hometemplate/sidebar-06/css/style.css">
 </head>
+<body style="background-color:#f7dee0">
 
-<div th:replace="fragments :: header"></div>
-<body>
-<form method="post">
-    <div class="searchForm">
-        <label>Country
-            <input type="text"  th:field="${searchPreferences.country}" class="searchInputBoxes" >
-        </label>
-    </div>
-    <div class="searchForm">
-        <label>City
-            <input type="text" th:field="${searchPreferences.city}" class="searchInputBoxes">
-        </label>
-    </div>
-    <div class="searchForm">
-        <label>Search Radius
-            <input type="text" th:field="${searchPreferences.radius}" class="searchInputBoxes">
-        </label>
-    </div>
-    <div class="searchForm">
-        <label>Full-Time</label>
-        <input type="checkbox" th:value="fulltime" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+<div class="container d-flex align-items-stretch">
+    <nav id="sidebar" class="img" style="background-image: url(../Images/ada.png);">
+        <div class="p-4">
+            <h1><a href="/landing" class="logo">AdaCodes <span>My Dashboard</span></a></h1>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a href="/homepage"><span class="fa fa-home mr-3"></span> Home</a>
+                </li>
+                <li>
+                    <a href="/profile"><span class="fa fa-user mr-3"></span>Profile</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-sticky-note mr-3"></span> Resources</a>
+                </li>
+                <li>
+                    <a href="/jobsearch"><span class="fa fa-cogs mr-3"></span> Job Search</a>
 
-        <label>Part-Time</label>
-        <input type="checkbox" th:value="parttime" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+                </li>
+                <li>
+                    <a href="/logout"><span class="fa fa-paper-plane mr-3"></span> Logout</a>
+                </li>
+            </ul>
 
-        <label>Contract</label>
-        <input type="checkbox" th:value="contract" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+            <div class="footer">
+                <p>
+                    AdaCodes &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                </p>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div style="text-align:center" id="content">
+        <h1>Create New Search</h1>
+        <form method="post">
+            <div class="searchForm">
+                <label>Country
+                    <input type="text"  th:field="${searchPreferences.country}" class="searchInputBoxes" >
+                </label>
+            </div>
+            <div class="searchForm">
+                <label>City
+                    <input type="text" th:field="${searchPreferences.city}" class="searchInputBoxes">
+                </label>
+            </div>
+            <div class="searchForm">
+                <label>Search Radius
+                    <input type="text" th:field="${searchPreferences.radius}" class="searchInputBoxes">
+                </label>
+            </div>
+            <div class="searchForm">
+                <label>Full-Time</label>
+                <input type="checkbox" th:value="fulltime" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+                <label>Part-Time</label>
+                <input type="checkbox" th:value="parttime" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+
+                <label>Contract</label>
+                <input type="checkbox" th:value="contract" th:name="${jobType}" th:field="${searchPreferences.jobType}">
 
 
-        <label>Internship</label>
-        <input type="checkbox" th:value="internship" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+                <label>Internship</label>
+                <input type="checkbox" th:value="internship" th:name="${jobType}" th:field="${searchPreferences.jobType}">
 
 
-        <label>Temporary</label>
-        <input type="checkbox" th:value="temporary" th:name="${jobType}" th:field="${searchPreferences.jobType}">
+                <label>Temporary</label>
+                <input type="checkbox" th:value="temporary" th:name="${jobType}" th:field="${searchPreferences.jobType}">
 
+            </div>
+            <div class="searchForm">
+                <label>Search Term
+                    <input type="text" th:field="${searchPreferences.searchTerm}" class="searchInputBoxes">
+                </label>
+            </div>
+            <div class="searchForm">
+                <label> Site Type
+                    <input type="text" name="siteType" th:field="${searchPreferences.siteType}" class="searchInputBoxes" >
+                </label>
+                <p class="error" th:errors="${searchPreferences.siteType}"></p>
+            </div>
+            <div class="searchForm">
+                <label>Save a search by a Name
+                    <input type="text" th:field="${searchPreferences.savedSearchName}" class="searchInputBoxes" >
+                </label>
+            </div>
+            <div class="searchForm">
+                <input type="submit" value="Save">
+            </div>
+        </form>
     </div>
-    <div class="searchForm">
-        <label>Search Term
-            <input type="text" th:field="${searchPreferences.searchTerm}" class="searchInputBoxes">
-        </label>
-    </div>
-    <div class="searchForm">
-        <label> Site Type
-            <input type="text" name="siteType" th:field="${searchPreferences.siteType}" class="searchInputBoxes" >
-        </label>
-        <p class="error" th:errors="${searchPreferences.siteType}"></p>
-    </div>
-    <div class="searchForm">
-        <label>Save a search by a Name
-                <input type="text" th:field="${searchPreferences.savedSearchName}" class="searchInputBoxes" >
-        </label>
-    </div>
-    <div class="searchForm">
-            <input type="submit" value="search">
-    </div>
-</form>
+</div>
+
+<script src="../hometemplate/sidebar-06/js/jquery.min.js"></script>
+<script src="../hometemplate/sidebar-06/js/popper.js"></script>
+<script src="../hometemplate/sidebar-06/js/bootstrap.min.js"></script>
+<script src="../hometemplate/sidebar-06/js/main.js"></script>
 </body>
 </html>

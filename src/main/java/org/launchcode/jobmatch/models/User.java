@@ -30,6 +30,11 @@ public class User extends AbstractEntity{
     @ManyToMany
     @JoinColumn(name = "search_preferences_id")
     private List<SearchPreferences> searchPreferences;
+
+    @ManyToMany
+    @JoinColumn(name="saved_jobs_id")
+    private List<SavedJobs> savedJobs;
+
     public User(String email, String firstName, String lastName, String username, String password){
         this.email = email;
         this.firstName = firstName;
@@ -78,5 +83,13 @@ public class User extends AbstractEntity{
 
     public void setSearchPreferences(SearchPreferences searchPreferences) {
         this.searchPreferences.add(searchPreferences);
+    }
+
+    public List<SavedJobs> getSavedJobs() {
+        return savedJobs;
+    }
+
+    public void setSavedJobs(SavedJobs savedJobs) {
+        this.savedJobs.add(savedJobs);
     }
 }
