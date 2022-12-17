@@ -51,7 +51,7 @@ public class SearchController {
         searchPreferencesRepository.save(searchPreferences);
         userRepository.save(user.get());
 
-        return "/homepage";
+        return "/profile";
 
     }
 
