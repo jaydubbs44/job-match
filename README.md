@@ -21,6 +21,7 @@ Users can add resources if they know of something that is not already included i
 
 ## Technologies
 ### Java
+### JavaScript
 ### Spring Boot
 ### MySQL
 ### Hibernate
